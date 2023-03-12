@@ -6,4 +6,5 @@ import lombok.Value;
 public class RecipeDTO {
     String name;
     String instruction;
+
 }
