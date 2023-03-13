@@ -1,10 +1,7 @@
 package com.elwolako.recipe.model;
 
 import com.elwolako.recipe.dto.RecipeDTO;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -13,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Recipe {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @Column(name = "name")
@@ -23,7 +21,9 @@ public class Recipe {
     private String instruction;
 
     public Recipe(RecipeDTO recipeDTO) {
-        this.id= recipeDTO.getId();
+        if(recipeDTO.getId()!=null) {
+            this.id = recipeDTO.getId();
+        }
         this.name= recipeDTO.getName();
         this.author= recipeDTO.getAuthor();
         this.instruction= recipeDTO.getInstruction();
