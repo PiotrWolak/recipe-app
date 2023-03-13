@@ -28,7 +28,7 @@ public class RecipeController {
         return new ResponseEntity<>(recipe, HttpStatus.OK);
     }
 
-    @DeleteMapping("/recipe")
+    @DeleteMapping("/remove")
     public ResponseEntity<String> removeRecipe(@RequestParam int id){
         recipeService.removeRecipe(id);
         return new ResponseEntity<>("Recipe " + id + " Removed", HttpStatus.OK);
