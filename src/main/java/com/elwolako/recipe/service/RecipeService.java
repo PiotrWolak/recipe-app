@@ -16,16 +16,19 @@ public class RecipeService {
     public List<String> getAllRecipeNames(){
      return recipeRepository.findAllRecNames();
     }
-
-    public Optional<Recipe> getRecipeById(int id){
-        return recipeRepository.findById(id);
+    public List<Recipe> getAll(){
+        return recipeRepository.findAll();
     }
 
-//    public Optional<Recipe> updateRecipeById(int id, RecipeDTO newRecipe){
-//        return recipeRepository.s
-//    }
-//    public String createRecipe(String name, String description){
-//        return recipeRepository.save(new Recipe(name,description));
-//    }
+    public Recipe updateRecipe(RecipeDTO newRecipe){
+        return recipeRepository.save(new Recipe(newRecipe));
+    }
+    public Recipe createRecipe(RecipeDTO recipeDTO){
+        return recipeRepository.save(new Recipe(recipeDTO));
+    }
+
+    public void removeRecipe(int id){
+        recipeRepository.deleteById(id);
+    }
 
 }
